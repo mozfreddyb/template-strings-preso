@@ -1,0 +1,259 @@
+<!DOCTYPE HTML>
+<html lang="en-US" class="fade">
+<head>
+  <title>ES6 Template Strings & Templating in Gaia</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=1274, user-scalable=no">
+  <link rel="stylesheet" href="themes/mozilla/styles/style.css">
+  <style type="text/css">
+
+  </style>
+</head>
+<body class="list">
+
+  <header class="caption">
+    <h1>ES6 Template Strings & Templating in Gaia</h1>
+    <p class="footer">Frederik Braun, <a href="http://twitter.com/freddyb">@freddyb</a> or <a href="mailto:fbraun@mozilla.com">fbraun@mozilla.com</a></p>
+  </header>
+
+  <div id="cover" class="slide"><div>
+    <section>
+      <header>
+        <h2>ES6 Template Strings &<br> Templating in Gaia</h2>
+      </header>
+        <pre>
+            <code>var name = location.hash.slice(1);</code>
+            <code>var ts = `Hello ${name || 'world'}`;</code>
+        </pre>
+        <hr>
+      <footer class="byline">Frederik Braun, @freddyb, Gaia Tech Talk, Oct 7th, 2014</footer>
+    <footer class="notes">
+    </footer>
+    </section>
+  </div></div>
+
+  <div id="agenda" class="slide"><div>
+    <section>
+      <header>
+        <h2>Agenda</h2>
+      </header>
+      <ul>
+        <li>Templating in Gaia
+          <ul>
+            <li>What are your pain points?</li>
+          </ul>  
+        </li>
+        <li>ES6 Template strings</li>
+          <ul>
+              <li>String interpolation</li>
+              <li>Tagged Template strings</li>
+          </ul>
+        <li>Contextual Escaping</li>
+        <li>Questions and Answers</li>
+          <ul>
+              <li>&rarr; freddyb on #security </li>
+          </ul>
+      </ul> 
+      <footer class="notes">
+      </footer>
+    </section>
+  </div></div>
+
+  <div id="templating-right-now" class="slide"><div>
+    <section>
+      <header>
+        <h2>How do we use templates now?</h2>
+      </header>
+      <h3><strong>Mutliple libraries</strong> (<em>This is me guessing</em>)</h3>
+
+        <ul>
+            <li><em>shared/js/template.js</em></li>
+            <ul>
+                <li>Known problems with XSS and escaping (Bug 911373)</li>
+            </ul>
+            <li><em>shared/js/contacts/utilities/templates.js</em></li>
+            <ul>
+                <li>Mainly for adding static HTML to add additional inputs</li>
+            </ul>
+            <li><code>&lt;template&gt;</code></li>
+            <ul><li>Changes very content-specific<br> e.g., <code>template.querySelector(..).src = bar;</code></li></ul>
+            <li><code style="background: none repeat scroll 0% 0% lightgreen;">var x = `using template strings`</code><strong>&larr; let's talk about this!</strong></li>
+
+        </ul>
+      <footer class="notes">
+      </footer>
+    </section>
+  </div></div>
+
+  <div id="dts" class="slide"><div>
+      <section>
+          <header>
+              <h2>Default Template Strings</h2>
+          </header>
+          <img src="pictures/template-strings-preso/default-template-string-eswiki.png"
+               class="middle"
+               alt="default template strings">
+          <small class="credits">
+              <a href="http://tc39wiki.calculist.org/es6/template-strings/#">
+                  From the ESWiki at tc39wiki.calculist.org
+              </a>
+          </small>
+          <footer class="notes">
+          </footer>
+      </section>
+  </div></div>
+
+  <div id="mlts" class="slide"><div>
+      <section>
+          <header>
+              <h2>Multiline Template Strings</h2>
+          </header>
+          <img src="pictures/template-strings-preso/multiline-template-strings-eswiki.png"
+               class="middle"
+               alt="multiline template strings">
+          <small class="credits">
+              <a href="http://tc39wiki.calculist.org/es6/template-strings/#">
+                  From the ESWiki at tc39wiki.calculist.org
+              </a>
+          </small>
+          <footer class="notes">
+          </footer>
+      </section>
+  </div></div>
+  <div id="tts" class="slide"><div>
+      <section>
+          <header>
+              <h2>Tagged Template Strings</h2>
+          </header>
+          <img src="pictures/template-strings-preso/tagged-template-string-eswiki.png"
+               class="middle"
+               alt="tagged template strings">
+          <small class="credits">
+              <a href="http://tc39wiki.calculist.org/es6/template-strings/#">
+                  From the ESWiki at tc39wiki.calculist.org
+              </a>
+          </small>
+          <footer class="notes">
+          </footer>
+      </section>
+  </div></div>
+
+  <div id="ttsc" class="slide"><div>
+      <section>
+          <header>
+              <h2>Tagged Template Strings</h2>
+          </header>
+          <img src="pictures/template-strings-preso/tagged-template-string-eswiki-with-comment.png"
+               class="middle"
+               alt="tagged template strings with a comment">
+          <small class="credits">
+              <a href="http://tc39wiki.calculist.org/es6/template-strings/#">
+                  From the ESWiki at tc39wiki.calculist.org
+              </a>
+          </small>
+          <footer class="notes">
+          </footer>
+      </section>
+  </div></div>
+
+  <div id="tts-demo" class="slide"><div>
+      <section>
+          <header>
+              <h2>Demo: Safe HTML with bad inputs</h2>
+          </header>
+                 <iframe style="width: 110%; height: 75%;" src="https://js-quasis-libraries-and-repl.googlecode.com/svn/trunk/index.html"></iframe>
+          <small class="credits"> https://js-quasis-libraries-and-repl.googlecode.com/svn/trunk/index.html</small>
+          <footer class="notes">
+          </footer>
+      </section>
+  </div></div>
+
+  <div id="other-projects" class="slide"><div>
+          <section>
+              <header>
+                  <h2>Other interesting projects, some used within Gaia</h2>
+              </header>
+
+             <ul>
+                <li><a href="https://github.com/mozilla-b2g/bleach.js">Bleach.js</a></li>
+                 <ul><li>used in Gaia E-Mail app</li>
+                     <li>Can be used in a Worker</li></ul>
+                 <li><a href="https://github.com/cure53/DOMPurify">DOMPurify</a></li>
+                 <ul><li>had a lot of scrutiny from the hacker community</li>
+                     <li>advantage of avoiding parser bugs, as it uses the browser's parser</li>
+                 <li>can not be used in a Worker (requires a <code style="background-color: transparent">document</code> object)</li></ul>
+             </ul>
+              <footer class="notes">
+              </footer>
+          </section>
+      </div></div>
+
+  <div id="furtherreading" class="slide"><div>
+    <section>
+      <header>
+        <h2>Further Reading</h2>
+      </header>
+      <ul>
+        <li><a href="https://github.com/mozilla-b2g/gaia/blob/master/shared/js/contacts/utilities/templates.js">/shared/js/contacts/utilities/templates.js</a></li>
+        <li><a href="https://github.com/mozilla-b2g/gaia/blob/master/shared/js/template.js">/shared/js/template.js</a></li>
+        <li><a href="http://tc39wiki.calculist.org/es6/template-strings/">Template Strings explaiend at the ES6 wiki/</a></li>
+          <li><a href="https://github.com/mozilla-b2g/bleach.js">Bleach.js</a></li>
+        <li><a href="https://github.com/cure53/DOMPurify">DOM Purify</a></li>
+        <li><a href="https://js-quasis-libraries-and-repl.googlecode.com/svn/trunk/index.html">ES6 Template String Escape REPL</a></li>
+          <!-- XXX https://developers.google.com/closure/templates/docs/security --> <!-- TODO FIXME XXX -->
+      </ul>
+      <footer class="notes">
+      </footer>
+    </section>
+  </div></div>
+
+  <div id="thanks" class="slide"><div>
+    <section>
+      <header>
+        <h2>Thanks</h2>
+      </header>
+        <figure class="frame middle swing">
+        <img src="pictures/mozillaoverview/redpanda.jpg" 
+             alt="Red panda (Firefox)">
+        </figure>
+      <ul class="oneline demourl">
+        <li>Frederik Braun</li>
+        <li><a href="http://twitter.com/freddyb">@freddyb</a></li>
+        <li><a href="https://github.com/mozfreddyb/template-strings-preso/tree/master/html5">
+            https://github.com/mozfreddyb/template-strings-preso
+        </a></li>
+      </ul>
+      <small class="credits">
+        <a href="http://www.flickr.com/photos/yortw/5798336827/">
+          Photo by Yortw
+        </a>
+      </small>
+    <footer class="notes">
+      Thanks for listening! 
+    </footer>
+    </section>
+  </div></div>
+
+  <div id="oneline" class="slide oneline"><div>
+      <section>
+          <header>
+              <h2><strong>So, what do you think?</strong><br>Let's talk!</h2>
+          </header>
+          <ul class="oneline demourl">
+              <li>Frederik Braun</li>
+              <li><a href="http://twitter.com/freddyb">@freddyb</a></li>
+              <li><a href="https://github.com/mozfreddyb/template-strings-preso/tree/master/html5">
+                  https://github.com/mozfreddyb/template-strings-preso
+              </a></li>
+          </ul>
+          <footer class="notes">
+          </footer>
+      </section>
+  </div></div>
+
+
+  <div class="progress"><div></div></div>
+  <script src="scripts/script.js"></script>
+  <!-- Copyright © 2010–2012 Vadim Makeev — pepelsbey.net -->
+</body>
+</html>
